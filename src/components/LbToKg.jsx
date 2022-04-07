@@ -6,19 +6,22 @@ class LbToKg extends Component {
         weightInLb:0,
         weightInKg:0,
         plates:[0],
+        platesCount: [0,0,0,0,0,0],
     }
 
     handleChange = (event) => {
         const weights = [45, 35, 25, 10, 5, 2.5];
         let weightsToAdd = [];
+        const weightsCount = [0,0,0,0,0,0];
         const pounds = event.target.value;
         let poundsSide = (pounds-45)/2;
 
-        if (poundsSide>=weights[weights.length-1]) {
 
+        if (poundsSide>=weights[weights.length-1]) {
             for (let i=0; i<weights.length; i++){
                 while(poundsSide-weights[i]>=0){
                     weightsToAdd.push(weights[i]);
+                    weightsCount[i]++;
                     poundsSide-=weights[i];
                 }
                 if(poundsSide<1) break;
@@ -29,11 +32,11 @@ class LbToKg extends Component {
             weightInLb: pounds===""? 0 : pounds,
             weightInKg: Math.floor((pounds / 2.205)*10) / 10,
             plates: (weightsToAdd.length===0)? [0] : weightsToAdd,
+            platesCount: weightsCount,
         });
     }
 
     getPlates = () => {
-        console.log(this.state.plates);
         if(this.state.plates[0] === 0) return <span>None</span>
 
         let response = "";
@@ -41,6 +44,10 @@ class LbToKg extends Component {
         for(let i=0; i<this.state.plates.length; i++){
             if (i!==0) response += ", ";
             response += this.state.plates[i];
+            if(this.state.platesCount[i]>=2){
+                response += " x " + this.state.platesCount[i];
+                i+=this.state.platesCount[i]-1;
+            }
         }
 
         return response;
