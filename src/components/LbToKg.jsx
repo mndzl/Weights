@@ -50,7 +50,7 @@ class LbToKg extends Component {
         return (
             <div className="weight-container">
                 <form onSubmit={this.handleSubmit}>
-                    <label className="m-2">Enter weight in Lbs: </label>
+                    <label className="m-2">Enter weight in lbs: </label>
                     <input type="text" onChange={this.handleChange}/>
                     <br />
                     <div className="weights m-2">
