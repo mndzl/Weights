@@ -1,6 +1,11 @@
 import React from 'react';
+import { WeightContext } from '../Context';
 
-export default function Input ({weight, setWeight}) {
+export default function Input () {
+    const {
+        setWeight,
+    } = React.useContext(WeightContext);
+
     const change = (event) => {
         const value = event.target.value;
         value!=0 ? setWeight(value): setWeight(0);
