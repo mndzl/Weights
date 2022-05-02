@@ -20,7 +20,7 @@ export default function Percentages () {
 
     return (
         <>
-            <h3>Calculate Percentage</h3>
+            <h3>Calculate Percentage</h3> 
             <input onChange={calculate} style={{width:"2em"}} placeholder='Enter percentage'/>%:
 
             <span>  {newWeight}{unit} ({newWeight>0 ? <Plates calculated={newWeight}/> : "empty bar"})</span>
