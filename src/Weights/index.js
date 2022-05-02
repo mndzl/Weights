@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import Input from './Input'
 import UnitSwitcher from './Switcher';
 import Percentages from './Percentages';
+import Plates from './Plates';
 import { UnitProvider, WeightProvider } from './Context';
-import { WeightContext, UnitContext } from './Context'; 
 
 export default function Converter () {
     const [convertedUnit, setConvertedUnit] = React.useState(0);
-    const [ unit, setUnit ] = React.useState("KG");
+    const [ unit, setUnit ] = React.useState("LB");
     const [ weight, setWeight ] = React.useState(0); 
 
     useEffect(() => {
@@ -27,6 +27,7 @@ export default function Converter () {
                     <br/>
                     <span>{unit==="KG" ? "LB" : "KG"}: {convertedUnit}</span>
                     <br/>
+                    <Plates/>
                     <Percentages/>
                 </WeightProvider>
             </ UnitProvider>
